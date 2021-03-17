@@ -1,23 +1,31 @@
-import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { useCallback, useEffect } from 'react';
+import { runTest } from './test';
 
 function App() {
+
+  useEffect(() => {
+    runTest();
+  }, []);
+
+  const onClick = useCallback(() => {
+    runTest();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          Just open <code>console</code> and click on send requests.
         </p>
-        <a
+        <button
           className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+          onClick={onClick}
         >
-          Learn React
-        </a>
+          Send requests
+        </button>
       </header>
     </div>
   );
